@@ -236,22 +236,6 @@ pressKeyMap.update(numberMap)
 pressKeyMap.update(controlKeyMap)
 pressKeyMap.update(functionKeyMap)
 
-myGrammarCfg = Config("multi edit")
-myGrammarCfg.cmd = Section("Language section")
-myGrammarCfg.cmd.map = Item(
-    {
-        "copy": release + Key("c-c"),
-        "paste": release + Key("c-v"),
-        "undo": release + Key("c-z"),
-        "next tab": release + Key("c-tab"),
-        "next window": release + Key("a-tab"),
-    },
-    namespace={
-        "Key": Key,
-        "Text": Text,
-    }
-)
-
 grammarCfg = Config("multi edit")
 grammarCfg.cmd = Section("Language section")
 grammarCfg.cmd.map = Item(
@@ -367,6 +351,22 @@ grammarCfg.cmd.map = Item(
     }
 )
 
+myGrammarCfg = Config("multi edit")
+myGrammarCfg.cmd = Section("Language section")
+myGrammarCfg.cmd.map = Item(
+    {
+        "copy": release + Key("c-c"),
+        "paste": release + Key("c-v"),
+        "undo": release + Key("c-z"),
+        "next tab": release + Key("c-tab"),
+        "next window": release + Key("a-tab"),
+        'switch window [<n>]': Key('a-tab:%(n)d'),
+    },
+    namespace={
+        "Key": Key,
+        "Text": Text,
+    }
+)
 
 class KeystrokeRule(MappingRule):
     exported = False
