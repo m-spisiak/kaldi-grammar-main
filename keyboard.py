@@ -360,7 +360,8 @@ myGrammarCfg.cmd.map = Item(
         "undo": release + Key("c-z"),
         "next tab": release + Key("c-tab"),
         "next window": release + Key("a-tab"),
-        'switch window [<n>]': Key('a-tab:%(n)d'),
+        "switch window [<n>]": Key('a-tab:%(n)d'),
+        "window <text>": FocusWindow(None, "%(text)s", None, None, False)
     },
     namespace={
         "Key": Key,
