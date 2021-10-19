@@ -356,6 +356,7 @@ myGrammarCfg.cmd = Section("Language section")
 myGrammarCfg.cmd.map = Item(
     {
         "copy": release + Key("c-c"),
+	"(cut|snap)": release + Key("c-x"),
         "paste": release + Key("c-v"),
         "undo": release + Key("c-z"),
         "next tab": release + Key("c-tab"),
