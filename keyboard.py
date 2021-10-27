@@ -23,6 +23,7 @@ try:
 except:
     pass
 
+import dragonfly
 from words import handle_word
 
 release = Key("shift:up, ctrl:up, alt:up")
@@ -45,6 +46,9 @@ def cancel_and_sleep(text=None, text2=None):
     except:
         pass
 
+def print_visible_windows():
+    for win in dragonfly.Window.get_all_windows():
+        print(win.title)
 
 # For repeating of characters.
 specialCharMap = {
@@ -356,13 +360,14 @@ myGrammarCfg.cmd = Section("Language section")
 myGrammarCfg.cmd.map = Item(
     {
         "copy": release + Key("c-c"),
-	"(cut|snap)": release + Key("c-x"),
+	    "(cut|snap)": release + Key("c-x"),
         "paste": release + Key("c-v"),
         "undo": release + Key("c-z"),
         "next tab": release + Key("c-tab"),
         "next window": release + Key("a-tab"),
         "switch window [<n>]": Key('a-tab:%(n)d'),
-        "window <text>": FocusWindow(None, "%(text)s", None, None, False)
+        "window <text>": FocusWindow(None, "%(text)s", None, None, False),
+        "list windows": Function(print_visible_windows),
     },
     namespace={
         "Key": Key,
