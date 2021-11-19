@@ -379,7 +379,7 @@ myGrammarCfg.cmd.map = Item(
         "window <text>": FocusWindow(None, "%(text)s", None, None, False),
         "list windows": Function(print_visible_windows),
         "list window executables": Function(print_visible_window_executables),
-        "minimize all": Function(minimize_all),
+        "desktop": Function(minimize_all),
     },
     namespace={
         "Key": Key,
