@@ -46,9 +46,16 @@ def cancel_and_sleep(text=None, text2=None):
     except:
         pass
 
+
 def print_visible_windows():
     for win in dragonfly.Window.get_all_windows():
         print(win.title)
+
+
+def print_visible_window_executables():
+    for win in dragonfly.Window.get_all_windows():
+        print(win.executable)
+
 
 # For repeating of characters.
 specialCharMap = {
@@ -364,10 +371,11 @@ myGrammarCfg.cmd.map = Item(
         "paste": release + Key("c-v"),
         "undo": release + Key("c-z"),
         "next tab": release + Key("c-tab"),
-        "next window": release + Key("a-tab"),
-        "switch window [<n>]": Key('a-tab:%(n)d'),
+        "switch window": release + Key("a-tab"),
+        # "switch window [<n>]": Key('a-tab:%(n)d'),
         "window <text>": FocusWindow(None, "%(text)s", None, None, False),
         "list windows": Function(print_visible_windows),
+        "list window executables": Function(print_visible_window_executables),
     },
     namespace={
         "Key": Key,
