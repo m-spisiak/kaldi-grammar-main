@@ -380,6 +380,8 @@ myGrammarCfg.cmd.map = Item(
         "list windows": Function(print_visible_windows),
         "list window executables": Function(print_visible_window_executables),
         "desktop": Function(minimize_all),
+        #"open <text>": BringApp("%(text)s"),
+        "open code": BringApp("code"),
     },
     namespace={
         "Key": Key,
