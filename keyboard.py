@@ -23,8 +23,10 @@ try:
 except:
     pass
 
+
 import dragonfly
 from words import handle_word
+from action_open_window import OpenWindow
 
 release = Key("shift:up, ctrl:up, alt:up")
 
@@ -379,9 +381,11 @@ myGrammarCfg.cmd.map = Item(
         "window <text>": FocusWindow(None, "%(text)s", None, None, False),
         "list windows": Function(print_visible_windows),
         "list window executables": Function(print_visible_window_executables),
-        "desktop": Function(minimize_all),
-        #"open <text>": BringApp("%(text)s"),
-        "open code": BringApp("code"),
+        "desktop": Key("cw-d"),
+        #"open note": BringApp("gedit"),
+        #"open to do": BringApp("gnome-todo"),
+        #"open firefox": BringApp("firefox"),
+        "open <text>": OpenWindow("%(text)s"),
     },
     namespace={
         "Key": Key,
