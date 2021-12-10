@@ -31,7 +31,7 @@ class RepeatRule(CompoundRule):
     spec = "<sequence> [[[and] repeat [that]] <n> times]"
     extras = [
         sequence,  # Sequence of actions defined above.
-        IntegerRef("n", 1, 100),  # Times to repeat the sequence.
+        IntegerRef("n", 1, 1)#, 100),  # Times to repeat the sequence.
     ]
     defaults = {
         "n": 1,  # Default repeat count.

@@ -386,6 +386,7 @@ myGrammarCfg.cmd.map = Item(
         #"open to do": BringApp("gnome-todo"),
         #"open firefox": BringApp("firefox"),
         "open <text>": OpenWindow("%(text)s"),
+        "start gimp": StartApp("gimp"),
     },
     namespace={
         "Key": Key,
@@ -401,12 +402,12 @@ class KeystrokeRule(MappingRule):
         IntegerRef("num", 0, 1000000),
         Dictation("text"),
         Dictation("text2"),
-        Choice("char", specialCharMap),
-        Choice("letters", letterMap),
-        Choice("modifier1", modifierMap),
-        Choice("modifier2", modifierMap),
-        Choice("modifierSingle", singleModifierMap),
-        Choice("pressKey", pressKeyMap),
+        #Choice("char", specialCharMap),
+        #Choice("letters", letterMap),
+        #Choice("modifier1", modifierMap),
+        #Choice("modifier2", modifierMap),
+        #Choice("modifierSingle", singleModifierMap),
+        #Choice("pressKey", pressKeyMap),
     ]
     defaults = {
         "n": 1,
