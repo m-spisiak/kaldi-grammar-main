@@ -1,3 +1,4 @@
 *.pyc
 kaldi_model*/*
 kaldi_tmp*/*
+settings.py

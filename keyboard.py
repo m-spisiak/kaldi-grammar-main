@@ -9,6 +9,7 @@
 # Modifications by: Tony Grosinger
 #
 # Licensed under LGPL
+from settings import custom_grammar_mappings
 
 try:
     from aenea import *
@@ -369,25 +370,28 @@ grammarCfg.cmd.map = Item(
 
 myGrammarCfg = Config("multi edit")
 myGrammarCfg.cmd = Section("Language section")
+myMap = {
+    "copy": release + Key("c-c"),
+    "(cut|snap)": release + Key("c-x"),
+    "paste": release + Key("c-v"),
+    "undo": release + Key("c-z"),
+    "next tab": release + Key("c-tab"),
+    "switch window": release + Key("a-tab"),
+    # "switch window [<n>]": Key('a-tab:%(n)d'),
+
+    "window <text>": FocusWindow(None, "%(text)s", None, None, False),
+    "list windows": Function(print_visible_windows),
+    "list window executables": Function(print_visible_window_executables),
+    "desktop": Key("cw-d"),
+    "open <text>": OpenWindow("%(text)s"),
+
+    "<char>": Text("%(char)s"),
+    "(parens|parentheses)": Key("lparen, rparen, left/3"),
+    "<num>": Text("%(num)d"),
+}
+myMap.update(custom_grammar_mappings)
 myGrammarCfg.cmd.map = Item(
-    {
-        "copy": release + Key("c-c"),
-	    "(cut|snap)": release + Key("c-x"),
-        "paste": release + Key("c-v"),
-        "undo": release + Key("c-z"),
-        "next tab": release + Key("c-tab"),
-        "switch window": release + Key("a-tab"),
-        # "switch window [<n>]": Key('a-tab:%(n)d'),
-        "window <text>": FocusWindow(None, "%(text)s", None, None, False),
-        "list windows": Function(print_visible_windows),
-        "list window executables": Function(print_visible_window_executables),
-        "desktop": Key("cw-d"),
-        #"open note": BringApp("gedit"),
-        #"open to do": BringApp("gnome-todo"),
-        #"open firefox": BringApp("firefox"),
-        "open <text>": OpenWindow("%(text)s"),
-        "start gimp": StartApp("gimp"),
-    },
+    myMap,
     namespace={
         "Key": Key,
         "Text": Text,
@@ -402,7 +406,7 @@ class KeystrokeRule(MappingRule):
         IntegerRef("num", 0, 1000000),
         Dictation("text"),
         Dictation("text2"),
-        #Choice("char", specialCharMap),
+        Choice("char", specialCharMap),
         #Choice("letters", letterMap),
         #Choice("modifier1", modifierMap),
         #Choice("modifier2", modifierMap),

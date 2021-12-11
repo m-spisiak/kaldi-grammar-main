@@ -26,6 +26,8 @@ from dragonfly import Grammar, MappingRule, Function, Dictation, FuncContext
 from dragonfly.loader import CommandModuleDirectory
 from dragonfly.log import setup_log
 
+from settings import MODEL_DIR
+
 
 # --------------------------------------------------------------------------
 # Set up basic logging.
@@ -136,7 +138,7 @@ def main(args):
         #model_dir='kaldi_model_daanzu_20200905_1ep-ftdwk.100w.5ep',
         #model_dir='kaldi_model_daanzu_20200905_1ep-biglm',
         #model_dir='kaldi_model_dwk',
-        model_dir='kaldi_model_daanzu_20200905_1ep-biglm/kaldi_model',
+        model_dir=MODEL_DIR,
         # tmp_dir='kaldi_tmp',  # default for temporary directory
         # vad_aggressiveness=3,  # default aggressiveness of VAD
         # vad_padding_start_ms=300,  # default ms of required silence before VAD

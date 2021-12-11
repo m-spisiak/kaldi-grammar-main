@@ -1,0 +1,20 @@
+
+from dragonfly import *
+
+MODEL_DIR = 'kaldi_model_daanzu_20200905_1ep-biglm/kaldi_model',
+
+custom_grammar_mappings = {
+    "start gimp": StartApp("gimp"),
+    "open note": BringApp("gedit"),
+    "open to do": BringApp("gnome-todo"),
+
+    "open firefox": BringApp("firefox"),
+    "open chrome": BringApp("google-chrome"),
+    "open shell": Key("ca-t"),
+    "sublime": FocusWindow("sublime", None, None, None, False),
+    "firefox": FocusWindow("firefox", None, None, None, False),
+    "chrome": FocusWindow("chrome", None, None, None, False),
+    "shell": FocusWindow("terminal", None, None, None, False),
+    "files": FocusWindow("nautilus", None, None, None, False),
+    "code": FocusWindow("pycharm-community", None, None, None, False),
+}
