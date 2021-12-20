@@ -35,7 +35,7 @@ import time
 
 #---------------------------------------------------------------------------
 
-class OpenWindow(ActionBase):
+class OpenWindow(StartApp):
 
     def __init__(self, executable=None, index=None):
         if executable:  self.executable = executable.lower()
@@ -47,30 +47,6 @@ class OpenWindow(ActionBase):
         if executable:  arguments.append("executable=%r" % executable)
         if index:       arguments.append("index=%r" % index)
         self._str = ", ".join(arguments)
-
-    def _focus_window_after_starting(self, pid):
-        timeout = 1.0
-        exe = self._args[0]
-
-        # Wait for the window to appear for N seconds.
-        action = WaitWindow(executable=exe, timeout=timeout)
-        if action.execute():
-            # Bring the window to the foreground.
-            Window.get_foreground().set_foreground()
-
-        # The application window wasn't focused, so try to focus it.
-        else:
-            target = pid
-            start = time.time()
-            while time.time() - start < timeout:
-                found = False
-                for window in Window.get_matching_windows(exe):
-                    if target is None or window.pid == target:
-                        window.set_foreground()
-                        found = True
-                        break
-                if found:
-                    break
 
     def _darwin_start_app(self, executable):
         # Try to use the macOS 'open' command-line program to start a new
