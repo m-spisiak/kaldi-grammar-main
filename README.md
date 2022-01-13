@@ -3,7 +3,7 @@
 
 1. Clone
 1. Download Kaldi model to directory
-1. run pip3 install playsound
+1. run `pip3 install playsoun`
 1. Run `kaldi_module_loader_plus.py`
 
 ## Other Software Helpful With Voice
