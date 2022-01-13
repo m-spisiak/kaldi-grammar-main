@@ -388,6 +388,7 @@ myMap = {
     "<char>": Text("%(char)s"),
     "(parens|parentheses)": Key("lparen, rparen, left/3"),
     "<num>": Text("%(num)d"),
+    "phrase <text>":Text("%(text)s"),
 }
 myMap.update(custom_grammar_mappings)
 myGrammarCfg.cmd.map = Item(
