@@ -9,6 +9,7 @@
 # Modifications by: Tony Grosinger
 #
 # Licensed under LGPL
+from action_beepkey import BeepKey
 from settings import custom_grammar_mappings
 
 try:
@@ -371,7 +372,7 @@ grammarCfg.cmd.map = Item(
 myGrammarCfg = Config("multi edit")
 myGrammarCfg.cmd = Section("Language section")
 myMap = {
-    "copy": release + Key("c-c"),
+    "copy": release + BeepKey("c-c"),
     "(cut|snap)": release + Key("c-x"),
     "paste": release + Key("c-v"),
     "undo": release + Key("c-z"),
@@ -394,6 +395,7 @@ myMap.update(custom_grammar_mappings)
 myGrammarCfg.cmd.map = Item(
     myMap,
     namespace={
+        "BeepKey" : BeepKey,
         "Key": Key,
         "Text": Text,
     }
