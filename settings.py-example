@@ -1,7 +1,7 @@
 
 from dragonfly import *
 
-MODEL_DIR = 'kaldi_model_daanzu_20200905_1ep-biglm/kaldi_model',
+MODEL_DIR = 'kaldi_model'
 
 custom_grammar_mappings = {
     "start gimp": StartApp("gimp"),
