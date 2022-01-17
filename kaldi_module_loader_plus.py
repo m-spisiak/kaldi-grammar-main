@@ -19,7 +19,9 @@ import logging
 import sys
 import logging
 
-import dragonfly; logging.basicConfig(level=1)
+import dragonfly
+
+from action_beepkey import BeepKey; logging.basicConfig(level=1)
 
 from dragonfly import RecognitionObserver, get_engine
 from dragonfly import Grammar, MappingRule, Function, Dictation, FuncContext
@@ -80,9 +82,9 @@ def load_sleep_wake_grammar(initial_awake):
 
     class SleepRule(MappingRule):
         mapping = {
-            "start listening":  Function(wake) + Function(lambda: get_engine().start_saving_adaptation_state()),
-            "stop listening":   Function(lambda: get_engine().stop_saving_adaptation_state()) + Function(sleep),
-            "halt listening":   Function(lambda: get_engine().stop_saving_adaptation_state()) + Function(sleep),
+            "start listening":  Function(wake) + Function(lambda: get_engine().start_saving_adaptation_state()) + BeepKey(""),
+            "stop listening":   Function(lambda: get_engine().stop_saving_adaptation_state()) + Function(sleep) + BeepKey(""),
+            "halt listening":   Function(lambda: get_engine().stop_saving_adaptation_state()) + Function(sleep) + BeepKey(""),
         }
     sleep_grammar.add_rule(SleepRule())
 
