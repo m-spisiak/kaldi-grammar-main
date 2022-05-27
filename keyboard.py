@@ -91,6 +91,7 @@ specialCharMap = {
     "bang": "!",
     "question": "?",
     "caret": "^",
+    "tilde": "~"
     # some other symbols I haven't imported yet, lazy sorry
     # 'ampersand': Key('ampersand'),
     # 'apostrophe': Key('apostrophe'),
@@ -390,6 +391,8 @@ myMap = {
     "(parens|parentheses)": Key("lparen, rparen, left/3"),
     "<num>": Text("%(num)d"),
     "phrase <text>":Text("%(text)s"),
+    "number <num>": Text("%(num)d"),
+    'word <text>': Function(handle_word),
 }
 myMap.update(custom_grammar_mappings)
 myGrammarCfg.cmd.map = Item(
@@ -405,7 +408,7 @@ class KeystrokeRule(MappingRule):
     exported = False
     mapping = myGrammarCfg.cmd.map
     extras = [
-        IntegerRef("n", 1, 100),
+        IntegerRef("n", 1, 4),
         IntegerRef("num", 0, 1000000),
         Dictation("text"),
         Dictation("text2"),
