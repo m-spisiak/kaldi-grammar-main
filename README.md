@@ -4,8 +4,8 @@
 To install all dependencies, clone the repository and download the model (~600MB) copy the following into terminal:
 ```buildoutcfg
 sudo apt install xdotool python3 python3-venv
-git clone https://github.com/m-spisiak/kaldi-grammar-main.git && \
-    cd kaldi-grammar-main
+git clone https://github.com/m-spisiak/voice-shortcuts.git && \
+    cd voice-shortcuts
 python3 -m venv venv && source venv/bin/activate && \
     python -m pip install --upgrade pip setuptools wheel
 python -m pip install kaldi-active-grammar 'dragonfly2[kaldi]' playsound
@@ -15,11 +15,11 @@ cp settings.py-example settings.py
 ```
 
 Then you run the program by:
-`python kaldi_module_loader_plus.py`
+`python start_up.py`
 
 Since we created a virtual environment for the dependencies, to start the program afresh, you need to do:
 ```buildoutcfg
-cd kaldi-grammar-main
+cd voice-shortcuts
 source venv/bin/activate
-python kaldi_module_loader_plus.py
+python start_up.py
 ```
