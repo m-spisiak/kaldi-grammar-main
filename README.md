@@ -3,7 +3,7 @@
 
 To install all dependencies, clone the repository and download the model (~600MB) copy the following into terminal:
 ```buildoutcfg
-sudo apt install xdotool python3 python3-venv
+sudo apt install xdotool python3 python3-venv libportaudio2
 git clone https://github.com/m-spisiak/voice-shortcuts.git && \
     cd voice-shortcuts
 python3 -m venv venv && source venv/bin/activate && \
